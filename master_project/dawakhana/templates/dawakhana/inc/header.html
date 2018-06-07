@@ -1,0 +1,255 @@
+{% load static %}
+<!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+<header id="header">
+
+	<!-- - - - - - - - - - - - - - Bottom part - - - - - - - - - - - - - - - - -->
+
+
+	<div class="sticky_part">
+		<div class="top-strip">
+			<p>Flat 20% off on Medicines + Extra 10% MobiKwik SuperCash + Rs.50 Cash Up For Grab Know More <span id="hide" class="pull-right" style="color: #032c58;font-size: 15px; cursor:pointer"><b>X</b></span></p>
+		</div>
+		<div class="container">
+
+			<div class="row">
+
+				<div class="main_header_row">
+
+					<div class="col-md-4">
+
+						<!-- - - - - - - - - - - - - - Logo - - - - - - - - - - - - - - - - -->
+
+						<a href="{% url 'homepage' %}" class="logo">
+
+											<img src="{% static 'dawakhana/images/dawakhana-logo.jpg' %}" alt="">
+
+										</a>
+
+						<!-- - - - - - - - - - - - - - End of logo - - - - - - - - - - - - - - - - -->
+
+					</div>
+					<!--/ [col]-->
+
+
+
+
+					<div class="col-lg-6 col-sm-6" style="border-right:1px solid #ddd;">
+
+
+
+						<div class="align_right" style="margin-top: 20px; margin-bottom: 20px;">
+
+							<!-- - - - - - - - - - - - - - Login / register - - - - - - - - - - - - - - - - -->
+
+							<div class="login" style="font-size: 18px;">
+								<a href="{%url 'user_login' %}">Login</a><br/>
+								<a href="{% url 'customer_register' %}">customer_register</a><br/>
+								<a href="{% url 'pharmacist_register' %}">pharmacist_register</a>
+							</div>
+							<!--/ .login-->
+
+							<!-- - - - - - - - - - - - - - End of Login / register - - - - - - - - - - - - - - - - -->
+
+							<!-- - - - - - - - - - - - - - Shopping cart - - - - - - - - - - - - - - - - -->
+
+							<div class="shopping_cart_wrap">
+
+								<button id="open_shopping_cart" class="open_button" data-amount="0">
+
+													<b class="total_price">Rs.999.00</b>	<b class="title"></b>
+												</button>
+
+								<!-- - - - - - - - - - - - - - Products list - - - - - - - - - - - - - - - - -->
+
+								<div class="shopping_cart dropdown">
+
+									<div class="animated_item">
+
+										<p class="title">Recently added item(s)</p>
+
+										<!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+										<div class="clearfix sc_product">
+
+											<a href="#" class="product_thumb"><img src="{% static 'dawakhana/images/sc_img_1.jpg' %} " alt=""></a>
+
+											<a href="#" class="product_name">Aenean Auctor Wisi Et Urna Ipsum...</a>
+
+											<p>1 x Rs.499.00</p>
+
+											<button class="close"></button>
+
+										</div>
+										<!--/ .clearfix.sc_product-->
+
+										<!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+									</div>
+									<!--/ .animated_item-->
+
+									<div class="animated_item">
+
+										<!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+										<div class="clearfix sc_product">
+
+											<a href="#" class="product_thumb"><img src="{% static 'dawakhana/images/sc_img_2.jpg' %}" alt=""></a>
+
+											<a href="#" class="product_name">Lorem Ipsum Dolor Sit Amet...</a>
+
+											<p>1 x Rs.499.00</p>
+
+											<button class="close"></button>
+
+										</div>
+										<!--/ .clearfix.sc_product-->
+
+										<!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+									</div>
+									<!--/ .animated_item-->
+
+									<div class="animated_item">
+
+										<!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+										<div class="clearfix sc_product">
+
+											<a href="#" class="product_thumb"><img src="{% static 'dawakhana/images/sc_img_3.jpg' %} " alt=""></a>
+
+											<a href="#" class="product_name">Nemo Enim Ipsam <br>Voluptatem 30 ea</a>
+
+											<p>1 x Rs.499.00</p>
+
+											<button class="close"></button>
+
+										</div>
+										<!--/ .clearfix.sc_product-->
+
+										<!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+									</div>
+									<!--/ .animated_item-->
+
+									<div class="animated_item">
+
+										<!-- - - - - - - - - - - - - - Total info - - - - - - - - - - - - - - - - -->
+
+										<ul class="total_info">
+
+											<li><span class="price">Tax:</span> Rs.0.00</li>
+
+											<li><span class="price">Discount:</span> Rs.37.00</li>
+
+											<li class="total"><b><span class="price">Total:</span> Rs.999.00</b></li>
+
+										</ul>
+
+										<!-- - - - - - - - - - - - - - End of total info - - - - - - - - - - - - - - - - -->
+
+									</div>
+									<!--/ .animated_item-->
+
+									<div class="animated_item">
+
+										<a href="shopping_cart.php" class="button_grey">View Cart</a>
+
+										<a href="checkout.php" class="button_blue">Checkout</a>
+
+									</div>
+									<!--/ .animated_item-->
+
+								</div>
+								<!--/ .shopping_cart.dropdown-->
+
+								<!-- - - - - - - - - - - - - - End of products list - - - - - - - - - - - - - - - - -->
+
+							</div>
+							<!--/ .shopping_cart_wrap.align_left-->
+
+							<!-- - - - - - - - - - - - - - End of shopping cart - - - - - - - - - - - - - - - - -->
+
+						</div>
+						<!--/ .align_right-->
+
+					</div>
+
+					<div class="col-lg-2 col-sm-2 col-xs-12 align_center">
+
+						<p style="background-color: #032c58; color: #fff; margin-top: 17px;border-radius: ; border: 1px solid #eaeaea; padding: 8px 10px 8px 12px; width: 100%; border-radius: 3px;">Upload <br/>Prescription</p>
+					</div>
+				</div>
+				<!--/ .main_header_row-->
+			</div>
+
+			<!--/ .row-->
+		</div>
+		<!--/ .container-->
+
+
+		<div class="nav_item clearfix" style="margin-top: 15px;">
+			<div class="container">
+
+				<nav class="main_navigation clearfix">
+
+					<ul class="clearfix">
+
+						<li class="has_submenu"><a href="product_listing-medicine.php"><img src="{% static 'dawakhana/images/medicinei.png' %}"/> Medicine</a>
+							<ul class="theme_menu submenu">
+								<li class="has_submenu">
+									<a href="product_listing-medicine.php">Product 1</a>
+									<ul class="theme_menu submenu">
+										<li><a href="product_listing-medicine.php">Product 1- 1</a></li>
+										<li><a href="product_listing-medicine.php">Product 1- 2</a></li>
+										<li><a href="product_listing-medicine.php">Product 1- 3</a></li>
+									</ul>
+								</li>
+								<li class="has_submenu"><a href="product_listing-medicine.php">Product 2</a>
+									<ul class="theme_menu submenu">
+										<li><a href="product_listing-medicine.php">Product 1- 1</a></li>
+										<li><a href="product_listing-medicine.php">Product 1- 2</a></li>
+										<li><a href="product_listing-medicine.php">Product 1- 3</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li><a href="product_listing.php"><img src="{% static 'dawakhana/images/devicesi.png' %}" /> Medical Devices</a></li>
+						<li class="has_submenu"><a href="product_listing.php"><img src="{% static 'dawakhana/images/otci.png' %}" /> OTC</a>
+							<ul class="theme_menu submenu">
+								<li class="has_submenu">
+									<a href="product_listing.php">Contraceptives</a>
+									<ul class="theme_menu submenu">
+										<li><a href="product_listing.php">Product 1- 1</a></li>
+										<li><a href="product_listing.php">Product 1- 2</a></li>
+										<li><a href="product_listing.php">Product 1- 3</a></li>
+									</ul>
+								</li>
+								<li class="has_submenu"><a href="product_listing.php">Pain Relief</a>
+									<ul class="theme_menu submenu">
+										<li><a href="product_listing.php">Product 1- 1</a></li>
+										<li><a href="product_listing.php">Product 1- 2</a></li>
+										<li><a href="product_listing.php">Product 1- 3</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li><a href="product_listing.php"><img src="{% static 'dawakhana/images/insurancei.png' %}"/> Insurance</a></li>
+						<li><a href="product_listing.php"><img src="{% static 'dawakhana/images/blogi.png' %}" /> Blogs</a></li>
+						<li class="hidden"><a href="#">Calculator</a></li>
+					</ul>
+				</nav>
+				<!--/ .main_navigation-->
+			</div>
+		</div>
+	</div>
+
+	<!--/ .bottom_part -->
+
+	<!-- - - - - - - - - - - - - - End of bottom part - - - - - - - - - - - - - - - -
+
+<div class="menudiv"><div class="container"></div></div> -->
+
+</header>
+
+<div class="clearfix"></div>

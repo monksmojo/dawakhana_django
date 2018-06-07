@@ -1,0 +1,4 @@
+<form style="background-color:#FFCE36" class="form-control" method="post" action="{% url 'user_login' %}">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit" href="{% url 'homepage' %}">LOG IN </button>
+</form>
