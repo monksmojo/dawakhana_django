@@ -41,12 +41,17 @@
 						<div class="align_right" style="margin-top: 20px; margin-bottom: 20px;">
 
 							<!-- - - - - - - - - - - - - - Login / register - - - - - - - - - - - - - - - - -->
-
+							{% if user.email %}
+							<div class="login" style="font-size: 18px;">
+								<a href="{%url 'my_account' %}">{{user.get_full_name}}</a> | <a href="{% url 'user_logout' %}">Log out</a>
+							</div>
+							{% else %}
 							<div class="login" style="font-size: 18px;">
 								<a href="{%url 'user_login' %}">Login</a><br/>
 								<a href="{% url 'customer_register' %}">customer_register</a><br/>
 								<a href="{% url 'pharmacist_register' %}">pharmacist_register</a>
 							</div>
+							{% endif %}
 							<!--/ .login-->
 
 							<!-- - - - - - - - - - - - - - End of Login / register - - - - - - - - - - - - - - - - -->

@@ -127,4 +127,4 @@ STATIC_URL = '/static/'
 
 # custom editing in settings
 AUTH_USER_MODEL = 'dawakhana.User'
-LOGIN_REDIRECT_URL = 'homepage'
+LOGIN_REDIRECT_URL = 'my_account'

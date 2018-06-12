@@ -1,0 +1,356 @@
+<script>
+  $(document).ready(function() {
+
+    $("body").queryLoader2({
+      barHeight: 4,
+      backgroundColor: '#fff',
+      barColor: '#018bc8',
+      minimumTime: 2000,
+      onComplete: function() {
+
+        // show promo popup
+        if ($.arcticmodal && $('body').hasClass('promo_popup')) {
+          $.arcticmodal({
+            url: "modals/promo.html"
+          });
+        }
+
+      }
+    });
+
+  });
+</script>
+
+############error display function in register ################
+<section class="section_offset">
+
+  <h3>Create your account</h3>
+
+   <?php if($erromsg!=''){ ?>
+
+     <!-- Alert-->
+
+     <div class="hiddenmsg" style="padding:5px 10px 0 10px;">
+
+      <div class="alert alert-warning alert-dismissable">
+
+              <i class="fa fa-warning"></i>
+
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+
+              <b>Alert!</b> <?php echo $erromsg;?>
+
+          </div>
+
+      </div>
+
+      <?php  } if($message!=''){?>
+
+     <div class="hiddenmsg" style="padding:5px 10px 0 10px;">
+
+      <div class="alert alert-success alert-dismissable">
+
+              <i class="fa fa-check"></i>
+
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+
+              <b>Success!</b> <?php echo $message;?>
+
+          </div>
+
+      </div>
+
+      <?php } ?>
+
+      <?php if(!isset($_SESSION['post_json'])){ ?>
+
+
+
+### for fields with lable and error use this LANGUAGE_CODE
+
+{% csrf_token %} {% for field in form %}
+<div class="fieldWrapper">
+  {{ field.errors }} {{ field.label_tag }} {{ field }} {% if field.help_text %}
+  <p class="help">{{ field.help_text|safe }}</p>
+  {% endif %}
+</div>
+{% endfor %}
+
+
+
+### JavaScript in Register module
+
+<script>
+
+
+
+			$(document).ready(function(){
+
+
+
+				$("body").queryLoader2({
+
+	    			barHeight : 4,
+
+	    			backgroundColor : '#fff',
+
+	    			barColor : '#018bc8',
+
+	    			minimumTime : 2000,
+
+	    			onComplete : function(){
+
+
+
+						// show promo popup
+
+	    				if($.arcticmodal && $('body').hasClass('promo_popup')){
+
+							$.arcticmodal({
+
+								url : "modals/promo.html"
+
+							});
+
+						}
+
+
+
+	    			}
+
+	    		});
+
+
+
+			});
+
+
+
+		</script>
+
+
+
+    	<script>
+    		function val(v) {
+
+    			return document.forms["myForm"][v].value;
+
+    		}
+
+    		function ValidateEmail(mail) {
+
+    			if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+
+    				return 1;
+
+    			}
+
+    			//alert("You have entered an invalid email address!")
+
+    			return 0;
+
+    		}
+
+    		function validateForm() {
+
+    			var flag = 0;
+
+    			var fname = val('fname');
+
+    			var lname = val('lname');
+
+    			var email = val('email');
+
+    			var phone = val('phone');
+
+    			var pass = val('pass');
+
+    			var cpass = val('cpass');
+
+    			var gender = val('gender');
+
+    			var age = val('age');
+
+    			//	var address = val('address');
+
+    		});
+
+    		if (email != '') {
+
+    			if (!ValidateEmail(email)) {
+
+    				$('#email_address').css("border", "1px solid red");
+
+    				flag = 0;
+
+    			} else {
+
+    				$('#email_address').css("border", "");
+
+    			}
+
+    		}
+
+    		}
+
+
+
+    		if (pass != '' && cpass != '') {
+
+    			//alert('helo');
+
+    			if (pass != cpass) {
+
+    				$('#cpass').css("border", "1px solid red");
+
+    				flag = 0;
+
+    			} else {
+
+    				var value = document.getElementById("pass").value;
+
+    				if ((value.length) >= 6) {
+
+    					var phoneno = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()?{}+-.])[a-zA-Z0-9!@#$%^&*()?{}+-.]{6,}$/;
+
+    					if (pass.match(phoneno)) {
+
+    						//alert('1');
+
+    						$('#cpass').css("border", "");
+
+    						$('#pass').css("border", "");
+
+    						flag = 1;
+
+    					} else
+
+    					{
+
+    						var msg = '';
+
+    						if (pass.search(/[a-z]/) < 0) {
+
+    							msg += '-At lest 1 Character - Lower Case.<br>';
+
+    						}
+
+    						if (pass.search(/[A-Z]/) < 0) {
+
+    							msg += '-At lest 1 Character - Upper Case.<br>';
+
+    						}
+
+    						if (pass.search(/[0-9]/) < 0) {
+
+    							msg += '-At lest 1 Character - Number.<br>';
+
+    						}
+
+    						if (pass.search(/[!@#$%^&*()?{}+-.]/) < 0) {
+
+    							msg += '-At lest 1 Character - Special Character. (!@#$%^&*()?{}+)<br>';
+
+    						}
+
+    						if (msg == '') {
+
+    							msg += '-User only this Special Character. (!@#$%^&*()?{}+-.)<br>';
+
+    						}
+
+    						flag = 0;
+
+    						document.getElementById("error_msg").innerHTML = msg;
+
+    						//alert(msg);
+
+    					}
+
+    				} else
+
+    				{
+
+    					alert('Mininmum password Character 6');
+
+    					flag = 0;
+
+    				}
+
+    			}
+
+    		}
+
+    		if (filteredList.length > 0) {
+
+    			flag = 0;
+
+    		} else {
+
+    			if (flag == 1) {
+
+    				flag = 1;
+
+    			}
+
+    		}
+
+    		if (flag == 0) {
+
+    			return false;
+
+    		} else {
+
+    			return true;
+
+    		}
+
+    		}
+
+    		function validateForm_otp() {
+
+    			var value = document.getElementById("otp").value;
+
+    			if (value != '') {
+
+    				return true;
+
+    			}
+
+    			$("#otp").css("border", "1px solid red");
+
+    			return false;
+
+    		}
+    	</script>
+
+
+
+
+
+
+
+
+
+      			$(document).ready(function(){
+
+      				$("body").queryLoader2({
+      	    			barHeight : 4,
+      	    			backgroundColor : '#fff',
+      	    			barColor : '#018bc8',
+      	    			minimumTime : 2000,
+      	    			onComplete : function(){
+
+      						// show promo popup
+      	    				if($.arcticmodal && $('body').hasClass('promo_popup')){
+      							$.arcticmodal({
+      								url : "modals/promo.html"
+      							});
+      						}
+
+      	    			}
+      	    		});
+
+      			});
+
+      		</script>

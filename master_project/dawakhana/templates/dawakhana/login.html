@@ -1,121 +1,132 @@
 <!doctype html>
 <html lang="en">
-<head>
-		<!-- Basic page needs ============================================ -->
-		<title>Login | The Dawakhana</title>
-		<meta charset="utf-8">
-		<meta name="author" content="">
-		<meta name="description" content="">
-		<meta name="keywords" content="">
-		<!-- Mobile specific metas
-		============================================ -->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<!-- Google web fonts
-		============================================ -->
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+{% csrf_token %} {% load static %}
 
-		<link rel="stylesheet" href="css/fontello.css">
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/style.css">
-<script src="js/modernizr.js"></script>
-<script src="js/jquery-2.1.1.min.js"></script>
-		<!--[if lte IE 9]>
+<head>
+	<!-- Basic page needs ============================================ -->
+	<title>Login | The Dawakhana</title>
+	<meta charset="utf-8">
+	<meta name="author" content="">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<!-- Mobile specific metas
+		============================================ -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<!-- Google web fonts
+		============================================ -->
+	<link href="http://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,700,700italic,900,900italic" rel="stylesheet" type="text/css">
+
+	<link rel="stylesheet" href="{% static 'dawakhana/css/fontello.css' %}">
+	<link rel="stylesheet" href="{% static 'dawakhana/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'dawakhana/css/style.css' %}">
+	<script src="{% static 'dawakhana/js/modernizr.js' %}"></script>
+	<script src="{% static 'dawakhana/js/jquery-2.1.1.min.js' %}"></script>
+	<!--[if lte IE 9]>
 			<link rel="stylesheet" type="text/css" href="css/oldie.css">
 		<![endif]-->
-	</head>
-	<body>
+</head>
 
-		<!-- - - - - - - - - - - - - - Styleswitcher - - - - - - - - - - - - - - - - -->
+<body>
 
-		
+	<!-- - - - - - - - - - - - - - Styleswitcher - - - - - - - - - - - - - - - - -->
 
-<!-- - - - - - - - - - - - - - end Styleswitcher - - - - - - - - - - - - - - - - -->
 
-		<!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
 
-		<div class="wide_layout">
+	<!-- - - - - - - - - - - - - - end Styleswitcher - - - - - - - - - - - - - - - - -->
 
-     <?php include'inc/header.php' ;?>
+	<!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
 
-			<!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+	<div class="wide_layout">
+		<!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
 
-			<div class="secondary_page_wrapper">
+		<div class="secondary_page_wrapper">
 
-				<div class="container">
+			<div class="container">
 
-					<!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+				<!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
 
-					<ul class="breadcrumbs">
+				<ul class="breadcrumbs">
 
-						<li><a href="index.html">Home</a></li>
-						<li>Login</li>
+					<li><a href="{% url 'homepage' %}">Home</a></li>
+					<li>Login</li>
 
-					</ul>
+				</ul>
 
-					
 
-					<!-- - - - - - - - - - - - - - Checkout method - - - - - - - - - - - - - - - - -->
 
-					<section class="section_offset create_account">
+				<!-- - - - - - - - - - - - - - Checkout method - - - - - - - - - - - - - - - - -->
 
-							<form class="type_2">
+				<section class="section_offset create_account">
 
-					<div class="row">
-                    <div class="col-md-3"></div> 
-                    <div class="col-md-6"><h1 class="text-center">Login</h1>
-                    <div class="box-s"><div class="theme_box">
-                    <ul>
-						
-									<li class="row">									
-										<!--/ [col] -->
-										<div class="col-sm-12">
-											
-											<label for="email_address" class="required">Email id / Mobile Number</label>
-											<input type="text" name="" id="email_address" placeholder="Enter here"/>
+					<form class="type_2" method="post" action="{% url 'user_login' %}">
+						{% csrf_token %}
 
+						<div class="row">
+							<div class="col-md-3"></div>
+							<div class="col-md-6">
+								<h1 class="text-center">Login</h1>
+								<div class="box-s">
+									<div class="theme_box">
+										<ul>
+
+											<li class="row">
+												<!--/ [col] -->
+												<div class="col-sm-12">
+
+													<label for="email_address" class="required">Email_id</label> {{login_form.email}}
+													<!--<input type="text" name="" id="email" placeholder="Enter here" />-->
+
+												</div>
+												<!--/ [col] -->
+
+
+											</li>
+											<li class="row">
+												<div class="col-sm-12">
+													<label for="password" class="required">Password</label> {{login_form.password1}}
+													<!--<input type="password" name="" id="password" placeholder="Password" />-->
+
+												</div>
+												<!--/ [col] -->
+
+												<!--/ [col] -->
+											</li>
+											<!--/ .row -->
+										</ul>
+									</div>
+									<div class="clearfix"></div>
+									<footer class="bottom_box on_the_sides">
+										<div class="on_the_sides">
+											<div class="left_side">
+												<p><span class="prompt">Required Fields</span></p>
+												<button class="button_blue middle_btn" value="submit" href="{% url 'my_account' %}">Submit</button>
+											</div>
+											<div class="right_side"><a href="#" class="small_link">Forgot your password?</a></div>
 										</div>
-                                        <!--/ [col] -->
-                                        
+									</footer>
+								</div>
+							</div>
+							<div class="col-md-3"></div>
+						</div>
+					</form>
+				</section>
+				<!--/ .section_offset -->
 
-									</li>								
-									<li class="row">
-										<div class="col-sm-12">
-											<label for="password" class="required">Password</label>
-											<input type="password" name="" id="password" placeholder="Password"/>
+			</div>
+			<!--/ .container-->
 
-										</div><!--/ [col] -->
+		</div>
+		<!--/ .page_wrapper-->
 
-										<!--/ [col] -->
-									</li><!--/ .row -->
-								</ul>
-                    </div>
-                    <div class="clearfix"></div>
-                    <footer class="bottom_box on_the_sides">
-                    <div class="on_the_sides">
-                    <div class="left_side">
-                    <p><span class="prompt">Required Fields</span></p>
-                    <button class="button_blue middle_btn" value="submit">Submit</button>
-                    </div>
-                    <div class="right_side"><a href="#" class="small_link">Forgot your password?</a></div>
-                    </div>
-						</footer>
-                        </div>
-</div> <div class="col-md-3"></div>
-</div></form>
-</section><!--/ .section_offset -->
+		<!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
 
-				</div><!--/ .container-->
+		<!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
 
-			</div><!--/ .page_wrapper-->
-			
-			<!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
 
-			<!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+		<!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
 
-			 <?php include'inc/footer.php' ;?>
-			
-			<!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+	</div>
+	<!--/ [layout]-->
+</body>
 
-		</div><!--/ [layout]-->	
-	</body>
-    </html>
+</html>

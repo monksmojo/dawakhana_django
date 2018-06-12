@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from .import views
-from .forms import *
+# from .forms import *
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -10,6 +10,11 @@ urlpatterns = [
          name='customer_register'),
     path('pharmacist_register/', views.pharmacist_register_view,
          name='pharmacist_register'),
-    path('user_login/', auth_views.login,
-         {'template_name': 'dawakhana/user_login.html', 'authentication_form': user_login_form}, name='user_login'),
+    path('user_login/', views.login_view, name='user_login'),
+    path('user_logout/', views.logout_view, name='user_logout'),
+    path('my_account/', views.my_account_view, name='my_account'),
+    path('user_edit_account', views.edit_account_view, name='user_edit_account'),
+    path('user_edit_address', views.edit_address_view, name='user_edit_address'),
+    path('user_add_address', views.add_address_view, name='user_add_address'),
+
 ]
