@@ -9,14 +9,23 @@ from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponseNotAllowed
 from django.db.models import Q
 from django.contrib import messages
+from django.template.context_processors import csrf
 # Create your views here.
 
 
 def homepage_view(request):
-    return render(request, 'dawakhana/index.html',)
+    language = 'en-gb'
+    session_language = 'en-gb'
+    args = {}
+    args.update(csrf(request))
+    args['medicine'] = Medicine.objects.all()
+    args['salt'] = Salt.objects.all()
+    args['language'] = language
+    args['session_language'] = session_language
+    return render(request, 'dawakhana/homepage.html', args)
 
 
-# user registration model
+# ________user details section___________________________________
 def customer_register_view(request):
     c_form = customer_register_form(request.POST or None)
     context = {
@@ -58,7 +67,7 @@ def pharmacist_register_view(request):
         p_user.save()
         new_p_user = authenticate(
             username=username, password=password, email=email)
-        #login(request, new_p_user)
+        # login(request, new_p_user)
         return redirect('homepage')
 
     return render(request, 'dawakhana/pharmacist_register.html', context)
@@ -71,9 +80,12 @@ def login_view(request):
         password = request.POST['password1']
         new_user = authenticate(request, email=email, password=password)
         if new_user is not None:
-            if new_user.is_active:
+            if new_user.is_active and new_user.customer:
                 login(request, new_user)
-                return redirect('my_account')
+                return redirect('customer_account')
+            elif new_user.is_active and new_user.pharmacist:
+                login(request, new_user)
+                return redirect('pharmacist_account')
             else:
                 return HttpResponse('inactive profile')
 
@@ -86,8 +98,10 @@ def logout_view(request):
     logout(request)
     return redirect('homepage')
 
+#______________________ CUSTOMER RELATED VIEWS _______________________#
 
-def my_account_view(request):
+
+def customer_account_view(request):
     id = request.user.pk
     user = User.objects.get(pk=id)
     user.save()
@@ -97,25 +111,26 @@ def my_account_view(request):
     context = {"user_sa": user_sa,
                "user": user,
                }
-    return render(request, 'dawakhana/my_account.html', context)
+    return render(request, 'dawakhana/customer_account.html', context)
 
 
-def edit_account_view(request):  # edit useraccount view
+def customer_edit_account_view(request):  # edit useraccount view
     if request.method == 'POST':
         ea_form = edit_account_form(request.POST, instance=request.user)
         if ea_form.is_valid():
             ea_form.save()
-            return redirect('my_account')
+            return redirect('customer_account')
         else:
             messages.error(request, ('please correct the error below'))
             return redirect('user_edit_account')
     ea_form = edit_account_form(instance=request.user)
     context = {'ea_form': ea_form}
-    return render(request, 'dawakhana/edit_account_information.html', context)
+    return render(request, 'dawakhana/edit_customer_information.html', context)
 
 
-def edit_address_view(request):
+def customer_edit_address_view(request):
     id = request.user.pk
+
     # editing of user default address
     user_address = Address.objects.get(user_id=id)
     if request.method == 'POST':
@@ -123,24 +138,81 @@ def edit_address_view(request):
             request.POST, instance=user_address)
         if user_sa_form.is_valid():
             user_sa_form.save()
-            return redirect('my_account')
+            return redirect('customer_account')
         else:
             messages.error(request, ("please enter a valid address"))
-            return redirect('user_edit_address')
+            return redirect('customer_edit_address')
     user_sa_form = address_form(instance=user_address)
     context = {'user_sa_form': user_sa_form}
-    return render(request, 'dawakhana/edit_user_address.html', context)
+    return render(request, 'dawakhana/customer_edit_address.html', context)
 
 
-def add_address_view(request):
+def customer_add_address_view(request):
     id = request.user.pk
     user = User.objects.get(pk=id)
     if request.method == 'POST':
 
-        new_address = user.address.create(phone=request.POST['phone'], last_name=request.POST['last_name'], first_name=request.POST['first_name'], title=request.POST['title'], street_address=request.POST['street_address'], city=request.POST['city'],
-                                          country=request.POST['country'], pincode=request.POST['pincode'],)
+        new_address = user.address_set.create(phone=request.POST['phone'], last_name=request.POST['last_name'], first_name=request.POST['first_name'], title=request.POST['title'], street_address=request.POST['street_address'], city=request.POST['city'],
+                                              country=request.POST['country'], pincode=request.POST['pincode'],)
         new_address.save()
-        return redirect('my_account')
+        return redirect('customer_account')
     user_sa_form = address_form(instance=user)
     context = {'user_sa_form': user_sa_form}
-    return render(request, 'dawakhana/add_user_address.html', context)
+    return render(request, 'dawakhana/customer_add_address.html', context)
+
+#_________________________pharmacist related views__________________________________#
+
+
+def pharmacist_account_view(request):
+    id = request.user.pk
+    puser = User.objects.get(pk=id)
+    puser.save()
+    # puser_sa = Address.objects.filter(user_id=id)
+    context = {  # "user_sa": puser_sa,
+        "puser": puser,
+    }
+    return render(request, 'dawakhana/pharmacist_account.html', context)
+
+# _____________________ stock & meficine section___________________________________
+
+
+def medicine_listing_view(request):
+    medicine = Medicine.objects.all
+    context = {
+        'medicine': medicine
+    }
+
+    return render(request, 'dawakhana/medicine_listing.html', context)
+
+
+def medicine_details_view(request, id):
+    med = Medicine.objects.get(pk=id)
+    med.save()
+    slt = Salt.objects.filter(medicine__pk=id)
+    context = {
+        'med': med,
+        'slt': slt
+    }
+
+    return render(request, 'dawakhana/medicine_details.html', context)
+
+
+def search_medicine_listing_view(request):
+    if request.method == 'POST':
+        srch = request.POST['med_srch']
+        if srch:
+            matches = Medicine.objects.filter(
+                Q(m_name__icontains=srch) | Q(salt__s_name__icontains=srch))
+            if matches:
+                return render(request, 'dawakhana/search_medicine_listing.html', {'matches': matches, 'srch': srch})
+            else:
+                return render(request, 'dawakhana/search_medicine_listing.html', {'srch': srch})
+
+        else:
+            return redirect('homepage')
+    else:
+        return render(request, 'dawakhana/homepage.html')
+
+
+def new_page_view(request):
+    return render(request, 'dawakhana/search_medicine_listing.html',)

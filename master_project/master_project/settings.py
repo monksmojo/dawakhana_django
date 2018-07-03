@@ -124,6 +124,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'dawakhana/static'),
+)
+STATIC_ROOT = os.path.join(BASE_DIR, 'base_static')
 
 # custom editing in settings
 AUTH_USER_MODEL = 'dawakhana.User'

@@ -25,15 +25,15 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<form action="{% url 'user_add_address' %}" method="post" class="type_2">
-		{% csrf_token %} {% for field in user_sa_form %}
+	<form action="{% url 'pharmacist_register' %}" method="post" class="type_2">
+		{% csrf_token %} {% for field in p_form %}
 		<div class="fieldWrapper">
 			{{ field.errors }} {{ field.label_tag }} {{ field }} {% if field.help_text %}
 			<p class="help">{{ field.help_text|safe }}</p>
 			{% endif %}
 		</div>
 		{% endfor %}
-		<button type="submit" name="register" class="button_blue middle_btn" value="register" href="{%url 'user_add_address' %}">Register</button>
+		<button type="submit" name="register" class="button_blue middle_btn" value="register">Register</button>
 	</form>
 
 </body>

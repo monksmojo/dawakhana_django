@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Basic page needs
+		============================================ -->
+	<title>The Dawakhana</title>
+	<meta charset="utf-8">
+	<meta name="author" content="">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> {% include 'dawakhana/inc/base_link.html '%}
+	<script>
+		$(document).ready(function() {
+
+			$("body").queryLoader2({
+				barHeight: 4,
+				backgroundColor: '#fff',
+				barColor: '#018bc8',
+				minimumTime: 2000,
+				onComplete: function() {
+
+					// show promo popup
+					if ($.arcticmodal && $('body').hasClass('promo_popup')) {
+						$.arcticmodal({
+							url: "modals/promo.html"
+						});
+					}
+
+				}
+			});
+
+		});
+	</script>
+
+	<!-- Old IE stylesheet
+		============================================ -->
+	<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="css/oldie.css">
+		<![endif]-->
+</head>
+
+<body>
+	<div class="wide_layout">
+
+		<!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+		{% include 'dawakhana/inc/header.html' %}
+
+		<div class="secondary_page_wrapper">
+
+			<div class="container">
+
+
+				<div class="row">
+
+
+
+					<main class="col-md-8 col-sm-8"><br>
+
+						<section class="section_offset">
+							<h5>Search reult for: {{srch}} </h5>
+						</section>
+
+						<!-- - - - - - - - - - - - - - Products - - - - - - - - - - - - - - - - -->
+						<div class="section_offset">
+							{% if matches %}
+							<div id="products_container">
+								{% for m in matches %}
+								<div class="product_item">
+									<div class="row">
+										<div class="col-md-8">
+											<div class="description">
+
+												<h5><a href="{% url 'medicine_details' m.id %}">{{m.m_name}}</a></h5>
+												<ul class="seller_stats">
+													{% for s in m.salt.all %}
+													<li><strong>{{s.s_name}}</strong></li>
+													{% endfor %}
+													<li><strong>{{m.mb_quantity}}</strong></li>
+													<li>{{m.mc_name}}</li>
+												</ul>
+											</div>
+										</div>
+
+										<div class="col-md-4">
+											<div class="actions">
+												<h5 class="align_right">{{m.our_price}}</h5>
+												<ul class="buttons_col align_right">
+													<li><a href="product_details-medicine.php" class="button_blue middle_btn add_to_cart">Add to Cart</a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								{% endfor %}
+							</div>
+							<!--/ .table_layout -->
+							{% else %}
+							<h5>NO Results Found</h5> {% endif %}
+						</div>
+					</main>
+				</div>
+				<!--/ .row -->
+			</div>
+			<!--/ .container-->
+		</div>
+		<!--/ .page_wrapper-->
+		{% include 'dawakhana/inc/footer.html' %}
+
+	</div>
+	<!--/ [layout]-->
+
+</body>
+
+</html>

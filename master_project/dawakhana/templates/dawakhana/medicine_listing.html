@@ -1,0 +1,378 @@
+<!doctype html> {% load static %}
+<html lang="en">
+
+<head>
+	<!-- Basic page needs
+		============================================ -->
+	<title>The Dawakhana</title>
+	<meta charset="utf-8">
+	<meta name="author" content="">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+
+	<!-- Mobile specific metas
+		============================================ -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<!-- Google web fonts
+		============================================ -->
+	<link href="http://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,700,700italic,900,900italic" rel="stylesheet" type="text/css">
+
+	<!-- Libs CSS
+		============================================ -->
+	<link rel="stylesheet" href="{% static 'dawakhana/css/animate.css' %}">
+	<link rel="stylesheet" href="{% static 'dawakhana/css/fontello.css' %}">
+	<link rel="stylesheet" href="{% static 'dawakhana/css/bootstrap.min.css' %}">
+
+	<!-- Theme CSS
+		============================================ -->
+	<link rel="stylesheet" href="{% static 'dawakhana/css/jquery-ui.min.css' %}">
+	<link rel="stylesheet" href="{% static 'dawakhana/js/arcticmodal/jquery.arcticmodal.css' %}">
+	<link rel="stylesheet" href="{% static 'dawakhana/js/owlcarousel/owl.carousel.css' %}">
+	<link rel="stylesheet" href="{% static 'dawakhana/js/colorpicker/colorpicker.css' %}">
+	<link rel="stylesheet" href="{% static 'dawakhana/css/style.css' %}">
+
+	<!-- JS Libs
+		============================================ -->
+	<script src="{% static 'dawakhana/js/modernizr.js' %}"></script>
+	<script src="{% static 'dawakhana/js/jquery-2.1.1.min.js' %}"></script>
+	<script src="{% static 'dawakhana/js/queryloader2.min.js' %}"></script>
+
+	<!-- Old IE stylesheet
+		============================================ -->
+	<!--[if lte IE 9]>
+			<link rel="stylesheet" type="text/css" href="css/oldie.css">
+		<![endif]-->
+</head>
+
+<body>
+	<div class="wide_layout">
+
+		<!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+		{% include 'dawakhana/inc/header.html' %}
+
+		<div class="secondary_page_wrapper">
+
+			<div class="container">
+
+				<!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+				<ul class="breadcrumbs">
+
+					<li><a href="{% url 'homepage' %}">Home</a></li>
+					<li>Medicine</li>
+
+				</ul>
+
+				<div class="row">
+
+					<aside class="col-md-3 col-sm-4 has_mega_menu">
+
+
+						<section class="section_offset">
+
+							<h3>Filter</h3>
+
+							<form class="type_2">
+
+								<div class="table_layout list_view">
+
+									<div class="table_row">
+
+										<!-- - - - - - - - - - - - - - Category filter - - - - - - - - - - - - - - - - -->
+
+										<div class="table_cell">
+
+											<label>Category</label>
+
+											<div class="custom_select">
+
+												<select name="">
+
+														<option value="Beauty">Beauty</option>
+														<option value="Personal Care">Personal Care</option>
+														<option value="Diet &amp; Fitness">Diet &amp; Fitness</option>
+														<option value="Baby Needs">Baby Needs</option>
+
+													</select>
+
+											</div>
+
+										</div>
+										<!--/ .table_cell -->
+
+										<!-- - - - - - - - - - - - - - End of category filter - - - - - - - - - - - - - - - - -->
+
+										<!-- - - - - - - - - - - - - - Manufacturer - - - - - - - - - - - - - - - - -->
+
+										<div class="table_cell">
+
+											<fieldset>
+
+												<legend>Manufacturer</legend>
+
+												<ul class="checkboxes_list">
+
+													<li>
+
+														<input type="checkbox" checked name="manufacturer" id="manufacturer_1">
+														<label for="manufacturer_1">Manufacturer 1</label>
+
+													</li>
+
+													<li>
+
+														<input type="checkbox" name="manufacturer" id="manufacturer_2">
+														<label for="manufacturer_2">Manufacturer 2</label>
+
+													</li>
+
+													<li>
+
+														<input type="checkbox" name="manufacturer" id="manufacturer_3">
+														<label for="manufacturer_3">Manufacturer 3</label>
+
+													</li>
+
+												</ul>
+
+											</fieldset>
+
+										</div>
+										<!--/ .table_cell -->
+
+										<!-- - - - - - - - - - - - - - End manufacturer - - - - - - - - - - - - - - - - -->
+
+										<!-- - - - - - - - - - - - - - Price - - - - - - - - - - - - - - - - -->
+
+										<!--/ .table_cell -->
+
+
+										<!-- - - - - - - - - - - - - - End price - - - - - - - - - - - - - - - - -->
+
+									</div>
+									<!--/ .table_row -->
+
+								</div>
+								<!--/ .table_layout -->
+
+								<footer class="bottom_box">
+
+									<div class="buttons_row">
+
+										<button type="submit" class="button_blue middle_btn">Search</button>
+
+										<button type="reset" class="button_grey middle_btn filter_reset">Reset</button>
+
+									</div>
+
+								</footer>
+
+							</form>
+
+						</section>
+
+
+						<!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
+
+					</aside>
+
+					<main class="col-md-9 col-sm-8">
+
+						<section class="section_offset">
+
+							<h1>Medicine </h1>
+
+							<p>Mauris accumsan nulla vel diam. Sed in lacus ut enim adipiscing aliquet. Nulla venenatis. In pede mi, aliquet sit amet, euismod in, auctor ut, ligula. Aliquam dapibus tincidunt metus. Praesent justo dolor, lobortis quis, lobortis dignissim, pulvinar
+								ac, lorem. Vestibulum sed ante. Donec sagittis euismod purus. Sed ut perspiciatis sit voluptatem accusantim doloremque laudantim.</p><br>
+
+						</section>
+
+						<!-- - - - - - - - - - - - - - Products - - - - - - - - - - - - - - - - -->
+
+						<div class="section_offset">
+
+							<header class="top_box on_the_sides">
+
+								<div class="left_side clearfix v_centered">
+
+									<!-- - - - - - - - - - - - - - Sort by - - - - - - - - - - - - - - - - -->
+
+									<div class="v_centered">
+
+										<span>Sort by:</span>
+
+										<div class="custom_select sort_select">
+
+											<select name="">
+
+													<option value="Default">Default</option>
+													<option value="Price">Price</option>
+													<option value="Name">Name</option>
+													<option value="Date">Date</option>
+
+												</select>
+
+										</div>
+
+									</div>
+
+									<!-- - - - - - - - - - - - - - End of sort by - - - - - - - - - - - - - - - - -->
+
+									<!-- - - - - - - - - - - - - - Number of products shown - - - - - - - - - - - - - - - - -->
+
+									<div class="v_centered">
+
+										<span>Show:</span>
+
+										<div class="custom_select">
+
+											<select name="">
+
+													<option value="15">15</option>
+													<option value="12">12</option>
+													<option value="9">9</option>
+													<option value="6">6</option>
+													<option value="3">3</option>
+
+												</select>
+
+										</div>
+
+									</div>
+
+									<!-- - - - - - - - - - - - - - End of number of products shown - - - - - - - - - - - - - - - - -->
+
+								</div>
+
+
+
+							</header>
+							{% for m in medicine %}
+
+							<div class="table_layout" id="products_container">
+
+								<div class="table_row">
+
+									<!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+									<div class="table_cell">
+
+										<div class="product_item">
+
+											<!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+
+											<div class="image_wrap">
+
+												<a href="product_details.php">	<img src="{% static 'dawakhana/images/product_img_7.jpg' %}" alt="img_not"></a>
+
+												<!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+
+												<!--/ .actions_wrap-->
+
+												<!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+
+											</div>
+											<!--/. image_wrap-->
+
+											<!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+
+											<!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+											<div class="description">
+
+												<a href="#">{{m.id}}</a>
+
+												<a href="{% url 'medicine_details' m.id  %}">{{m.m_name}}</a>
+
+												<div class="clearfix product_info">
+
+													<p class="product_price alignleft"><b>₹{{m.our_price}}</b></p>
+
+													<!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+												</div>
+											</div>
+											<!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - -
+												<- - - -->
+
+										</div>
+
+									</div>
+									<!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+								</div>
+								<!--/ .table_row -->
+
+							</div>
+							{% endfor %}
+							<!--/ .table_layout -->
+
+							<footer class="bottom_box on_the_sides">
+
+								<div class="left_side">
+
+									<p>Showing 1 to 3 of 45 (15 Pages)</p>
+
+								</div>
+
+								<div class="right_side">
+
+									<ul class="pags">
+
+										<li><a href="#"></a></li>
+										<li class="active"><a href="#">1</a></li>
+										<li><a href="#">2</a></li>
+										<li><a href="#">3</a></li>
+										<li><a href="#"></a></li>
+
+									</ul>
+
+								</div>
+
+							</footer>
+
+						</div>
+
+						<!-- - - - - - - - - - - - - - End of products - - - - - - - - - - - - - - - - -->
+
+					</main>
+
+				</div>
+				<!--/ .row -->
+
+			</div>
+			<!--/ .container-->
+
+		</div>
+		<!--/ .page_wrapper-->
+
+		<!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+		<!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+		{% include 'dawakhana/inc/footer.html' %}
+
+	</div>
+	<!--/ [layout]-->
+
+	<!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+
+	<!-- Include Libs & Plugins
+		============================================ -->
+	<script src="{% static 'dawakhana/js/jquery-ui.min.js' %}"></script>
+	<script src="{% static 'dawakhana/js/jquery.appear.js' %}"></script>
+	<script src="{% static 'dawakhana/js/jquery.countdown.plugin.min.js' %}"></script>
+	<script src="{% static 'dawakhana/js/jquery.countdown.min.js' %}"></script>
+	<script src="{% static 'dawakhana/js/owlcarousel/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'dawakhana/twitter/jquery.tweet.min.js' %}"></script>
+	<script src="{% static 'dawakhana/js/arcticmodal/jquery.arcticmodal.js' %}"></script>
+	<script src="{% static 'dawakhana/js/colorpicker/colorpicker.js' %}"></script>
+	<script src="{% static 'dawakhana/js/retina.min.js' %}"></script>
+
+	<!-- Theme files
+		============================================ -->
+	<script src="{% static 'dawakhana/js/theme.styleswitcher.js' %}"></script>
+	<script src="{% static 'dawakhana/js/theme.plugins.js' %}"></script>
+	<script src="{% static 'dawakhana/js/theme.core.js' %}"></script>
+
+</body>
+
+</html>

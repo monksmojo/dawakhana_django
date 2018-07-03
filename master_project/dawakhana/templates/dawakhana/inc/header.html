@@ -41,9 +41,13 @@
 						<div class="align_right" style="margin-top: 20px; margin-bottom: 20px;">
 
 							<!-- - - - - - - - - - - - - - Login / register - - - - - - - - - - - - - - - - -->
-							{% if user.email %}
+							{% if user.email and user.customer %}
 							<div class="login" style="font-size: 18px;">
-								<a href="{%url 'my_account' %}">{{user.get_full_name}}</a> | <a href="{% url 'user_logout' %}">Log out</a>
+								<a href="{%url 'customer_account' %}">{{user.get_full_name}}</a> | <a href="{% url 'user_logout' %}">Log out</a>
+							</div>
+							{% elif user.email and user.pharmacist %}
+							<div class="login" style="font-size: 18px;">
+								<a href="{%url 'pharmacist_account' %}">{{user.get_full_name}}</a> | <a href="{% url 'user_logout' %}">Log out</a>
 							</div>
 							{% else %}
 							<div class="login" style="font-size: 18px;">
@@ -200,7 +204,7 @@
 
 					<ul class="clearfix">
 
-						<li class="has_submenu"><a href="product_listing-medicine.php"><img src="{% static 'dawakhana/images/medicinei.png' %}"/> Medicine</a>
+						<li class="has_submenu"><a href="{% url 'medicine_listing' %}"><img src="{% static 'dawakhana/images/medicinei.png' %}"/> Medicine</a>
 							<ul class="theme_menu submenu">
 								<li class="has_submenu">
 									<a href="product_listing-medicine.php">Product 1</a>
@@ -245,6 +249,32 @@
 					</ul>
 				</nav>
 				<!--/ .main_navigation-->
+			</div>
+		</div>
+		<div class="">
+			<div style="position:; width:100%; bottom: 40px;padding: 29px 40px 40px 40px; background-color: #032c58;">
+				<div>
+					<form class="clearfix search" method="post" action="{% url 'search_medicine_listing' %}">
+						{% csrf_token %}
+						<h4 style="margin-bottom:0px; color:#fff; text-align: center;">Search from thousands of products available</h4>
+
+						<input type="text" name="med_srch" tabindex="1" placeholder="Search for Medicine Name / Product Name & Salt name" class="alignright fld" style="width:100%">
+						<!--	<select class="srch">
+<option>Please Select Product Type</option>
+<option value="medicine name">Medicine Name / Product Name</option>
+<option value="Salt">Salt name</option>
+</select> -->
+						<ul id="med_srch_result">
+
+						</ul>
+						<button type="submit" class="homered"><i class="icon-search"></i></button>
+
+					</form>
+
+					<!--/ #search-->
+
+					<!-- - - - - - - - - - - - - - End search form - - - - - - - - - - - - - - - - -->
+				</div>
 			</div>
 		</div>
 	</div>

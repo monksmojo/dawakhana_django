@@ -12,9 +12,6 @@ address_country = (('INDIA', 'India'), ('BANGLADESH',
 
 
 class customer_register_form(UserCreationForm):
-    age = forms.ChoiceField(choices=[(x, x) for x in range(16, 100)])
-    title = forms.ChoiceField(required=True, choices=user_title)
-    gender = forms.ChoiceField(required=True, choices=user_gender)
     email = forms.EmailField(
         max_length=250, required=True, help_text="enter your email id")
     first_name = forms.CharField(
@@ -31,15 +28,12 @@ class customer_register_form(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['title', 'gender', 'age', 'email', 'first_name',
+        fields = ['email', 'first_name',
 
                   'last_name', 'password1', 'password2', 'phone', 'customer']
 
 
 class pharmacist_register_form(UserCreationForm):
-    age = forms.ChoiceField(choices=[(x, x) for x in range(16, 100)])
-    title = forms.ChoiceField(required=True, choices=user_title)
-    gender = forms.ChoiceField(required=True, choices=user_gender)
     email = forms.EmailField(
         max_length=250, required=True, help_text="enter your email id")
     first_name = forms.CharField(
@@ -53,13 +47,19 @@ class pharmacist_register_form(UserCreationForm):
     numeric = RegexValidator(r'^[0-9]*$', 'Only [0-9] numbers are allowed')
     phone = forms.CharField(max_length=10, required=True, validators=[
         numeric], help_text="required for OTP")
-    organization = models.CharField(
-        verbose_name='Organization', max_length=250, blank=False, default="null")
+    dlno = forms.CharField(max_length=250, required=True, validators=[
+        numeric], help_text="needed for OTP")
+    gstno = forms.CharField(max_length=15, required=True, validators=[
+        numeric], help_text="please enter GST no.")
+    area_of_intrest = forms.CharField(
+        max_length=350, required=True, help_text="please enter your area of intrest")
+    company = forms.CharField(
+        max_length=350, required=True, help_text="please enter your company name")
 
     class Meta:
         model = User
-        fields = ['title', 'gender', 'age', 'email', 'first_name', 'last_name', 'password1',
-                  'password2', 'phone', 'pharmacist', 'is_active', 'organization']
+        fields = ['email', 'first_name', 'last_name', 'password1',
+                  'password2', 'phone', 'pharmacist', 'is_active', 'dlno', 'gstno', 'area_of_intrest', 'company']
 
 
 class user_login_form(forms.ModelForm):
@@ -70,7 +70,7 @@ class user_login_form(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['email', 'password', ]
+        fields = ['email', 'password1', ]
 
 
 class edit_account_form(forms.ModelForm):
@@ -80,13 +80,14 @@ class edit_account_form(forms.ModelForm):
 
 
 class address_form(forms.ModelForm):
+    title = forms.ChoiceField(required=True, choices=user_title)
+    numeric = RegexValidator(r'^[0-9]*$', 'Only [0-9] numbers are allowed')
+    phone = forms.CharField(max_length=10, required=True, validators=[
+                            numeric], help_text="required for OTP")
+    pincode = forms.CharField(max_length=9, required=True,
+                              help_text="enter your area pin code", validators=[numeric])
+
     class Meta:
         model = Address
-        title = forms.ChoiceField(required=True, choices=user_title)
-        numeric = RegexValidator(r'^[0-9]*$', 'Only [0-9] numbers are allowed')
-        phone = forms.CharField(max_length=10, required=True, validators=[
-                                numeric], help_text="required for OTP")
-        pincode = forms.CharField(
-            max_length=9, required=True, help_text="enter your area pin code", validators=[numeric])
         fields = ['title', 'first_name', 'last_name', 'phone', 'street_address', 'city', 'country',
                   'pincode']

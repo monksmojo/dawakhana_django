@@ -1,0 +1,248 @@
+<!doctype html> {% load static %}
+<html lang="en">
+
+<head>
+
+	<!-- Basic page needs ============================================ -->
+
+	<title>The Dawakhana </title>
+
+	<meta charset="utf-8">
+
+	<meta name="author" content="">
+
+	<meta name="description" content="">
+
+	<meta name="keywords" content="">
+
+
+
+	<!-- Mobile specific metas
+
+		============================================ -->
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+
+	<!-- Google web fonts
+
+		============================================ -->
+
+	<link href="http://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,700,700italic,900,900italic" rel="stylesheet" type="text/css">
+
+
+
+	<!-- Libs CSS
+
+		============================================ -->
+
+	<link rel="stylesheet" href="{% static 'dawakhana/css/animate.css' %}">
+
+	<link rel="stylesheet" href="{% static 'dawakhana/css/fontello.css' %}">
+
+	<link rel="stylesheet" href="{% static 'dawakhana/css/bootstrap.min.css' %}">
+
+
+
+	<!-- Theme CSS
+
+		============================================ -->
+
+	<link rel="stylesheet" href="{% static 'dawakhana/js/arcticmodal/jquery.arcticmodal.css' %}">
+
+	<link rel="stylesheet" href="{% static 'dawakhana/js/owlcarousel/owl.carousel.css' %}">
+
+	<link rel="stylesheet" href="{% static 'dawakhana/js/colorpicker/colorpicker.css' %}">
+
+	<link rel="stylesheet" href="{% static 'dawakhana/css/style.css' %}">
+
+
+
+	<!-- JS Libs
+
+		============================================ -->
+	<script src="{% static 'dawakhana/js/modernizr.js' %}"></script>
+
+	<script src="{% static 'dawakhana/js/jquery-2.1.1.min.js' %}"></script>
+
+	<script src="{% static 'dawakhana/js/queryloader2.min.js' %}"></script>
+
+	<!--[if lte IE 9]>
+
+			<link rel="stylesheet" type="text/css" href="css/oldie.css">
+
+		<![endif]-->
+
+</head>
+
+<body>
+
+	<div class="wide_layout">
+
+		{% include 'dawakhana/inc/header.html' %}
+
+		<!--<?php include'class/register.php' ;?>-->
+
+		<!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+		<div class="secondary_page_wrapper">
+
+			<div class="container">
+
+
+
+				<!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+
+
+				<ul class="breadcrumbs">
+
+					<li><a href="index.html">Home</a></li>
+
+					<li>Edit Shipping Address</li>
+
+				</ul>
+
+
+
+				<!-- - - - - - - - - - - - - - Checkout method - - - - - - - - - - - - - - - - -->
+
+				<section class="section_offset">
+
+					<h3>Edit Shipping Address</h3>
+					<!-- Alert-->
+
+					<form action="{% url 'customer_add_address' %}" name="myForm" method="post" class="type_2">
+						{% csrf_token %}
+
+						<div class="theme_box">
+
+							<ul>
+
+								<li class="row">
+
+									<div class="col-sm-6">
+
+										<label class="required">Title</label>
+
+										<div class="custom_select">
+											{{user_sa_form.title}}
+
+										</div>
+
+									</div>
+
+								</li>
+
+								<li class="row">
+
+									<div class="col-sm-4">
+
+										<p id="fname"></p>
+
+										<label for="first_name" class="required">First Name</label> {{user_sa_form.first_name}}
+
+									</div>
+
+									<!--/ [col] -->
+
+
+
+									<div class="col-sm-4">
+
+										<label for="last_name" class="required">Last Name</label> {{user_sa_form.last_name}}
+									</div>
+
+									<div class="col-sm-4">
+										<label class="required">Phone no.</label>{{user_sa_form.phone}}
+									</div>
+
+									<!--/ [col] -->
+
+								</li>
+								<li class="row">
+									<!--/ [col] -->
+									<div class="col-sm-4">
+
+										<label class="required">Street Address</label> {{user_sa_form.street_address}}
+									</div>
+
+									<div class="col-sm-4">
+										<label class="required">City</label> {{user_sa_form.city}}
+									</div>
+									<div class="col-sm-4">
+										<label class="required">Country</label>
+										<div class="custom_select">
+											{{user_sa_form.country}}
+										</div>
+									</div>
+
+								</li>
+								<li class="row">
+									<div class="col-sm-4">
+										<label class="required">Pin-Code</label> {{user_sa_form.pincode}}
+									</div>
+								</li>
+
+							</ul>
+
+						</div>
+						<div class="right_side">
+
+							<button type="submit" name="Edit" class="button_blue middle_btn" value="Edit" href="{% url 'customer_account' %}">ADD</button>
+
+						</div>
+
+						<!--/ [col] -->
+
+					</form>
+
+				</section>
+
+			</div>
+			<footer class="bottom_box on_the_sides">
+
+				<div class="right_side"> <span class="prompt">Required Fields</span> </div>
+
+			</footer>
+
+		</div>
+
+		<!--/ .container-->
+
+	</div>
+
+	<!--/ .page_wrapper-->
+
+
+
+	{% include 'dawakhana/inc/footer.html' %}
+
+	<!--/ [layout]-->
+
+	<script src="{% static 'dawakhana/js/jquery.appear.js' %}"></script>
+
+	<script src="{% static  'dawakhana/js/owlcarousel/owl.carousel.min.js' %}"></script>
+
+	<script src="{% static 'dawakhana/twitter/jquery.tweet.min.js' %}"></script>
+
+	<script src="{% static 'dawakhana/js/arcticmodal/jquery.arcticmodal.js' %}"></script>
+
+	<script src="{% static 'dawakhana/js/jquery.countdown.plugin.min.js' %}"></script>
+
+	<script src="{% static 'dawakhana/js/jquery.countdown.min.js' %}"></script>
+
+	<script src="{% static 'dawakhana/js/colorpicker/colorpicker.js' %}"></script>
+
+	<script src="{% static 'dawakhana/js/retina.min.js' %}"></script>
+
+	<script src="{% static 'dawakhana/js/theme.plugins.js' %}"></script>
+
+	<script src="{% static 'dawakhana/js/theme.core.js' %}"></script>
+
+	<script src="{% static  'dawakhana/js/formValidation.js' %}"></script>
+
+</body>
+
+</html>

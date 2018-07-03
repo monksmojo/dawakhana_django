@@ -1,0 +1,63 @@
+{% load static %}
+<!-- Google web fonts
+		============================================ -->
+<link href="http://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,700,700italic,900,900italic" rel="stylesheet" type="text/css">
+
+<!-- Libs CSS
+		============================================ -->
+<link rel="stylesheet" href="{% static 'dawakhana/css/animate.css' %}">
+<link rel="stylesheet" href="{% static 'dawakhana/css/fontello.css' %}">
+<link rel="stylesheet" href="{% static 'dawakhana/css/bootstrap.min.css' %}">
+
+<!-- Theme CSS
+		============================================ -->
+<link rel="stylesheet" href="{% static 'dawakhana/js/arcticmodal/jquery.arcticmodal.css' %}">
+<link rel="stylesheet" href="{% static 'dawakhana/js/owlcarousel/owl.carousel.css' %}">
+<link rel="stylesheet" href="{% static 'dawakhana/js/colorpicker/colorpicker.css' %}">
+<link rel="stylesheet" href="{% static 'dawakhana/css/style.css' %}">
+
+<!-- JS Libs
+		============================================ -->
+<script src="{% static 'dawakhana/js/modernizr.js' %}"></script>
+<script src="{% static 'dawakhana/js/jquery-2.1.1.min.js' %}"></script>
+<script src="{% static 'dawakhana/js/queryloader2.min.js' %}"></script>
+
+<script>
+  $(document).ready(function() {
+
+    $("body").queryLoader2({
+      barHeight: 4,
+      backgroundColor: '#fff',
+      barColor: '#018bc8',
+      minimumTime: 2000,
+      onComplete: function() {
+
+        // show promo popup
+        if ($.arcticmodal && $('body').hasClass('promo_popup')) {
+          $.arcticmodal({
+            url: "modals/promo.html"
+          });
+        }
+
+      }
+    });
+
+  });
+</script>
+
+
+<!-- Include Libs & Plugins
+============================================ -->
+<script src="{% static 'dawakhana/js/jquery.appear.js' %}"></script>
+<script src="{% static 'dawakhana/js/owlcarousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'dawakhana/twitter/jquery.tweet.min.js' %}"></script>
+<script src="{% static 'dawakhana/js/arcticmodal/jquery.arcticmodal.js' %}"></script>
+<script src="{% static 'dawakhana/js/jquery.countdown.plugin.min.js' %}"></script>
+<script src="{% static 'dawakhana/js/jquery.countdown.min.js' %}"></script>
+<script src="{% static 'dawakhana/js/colorpicker/colorpicker.js' %}"></script>
+<script src="{% static 'dawakhana/js/retina.min.js' %}"></script>
+<!-- Theme files
+============================================ -->
+<script src="{% static 'dawakhana/js/theme.styleswitcher.js' %}"></script>
+<script src="{% static 'dawakhana/js/theme.plugins.js' %}"></script>
+<script src="{% static 'dawakhana/js/theme.core.js' %}"></script>
